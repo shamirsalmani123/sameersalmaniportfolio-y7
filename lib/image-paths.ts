@@ -4,27 +4,25 @@ export const imagePaths = {
   // Photography categories
   photography: {
     portrait: [
-      "/images/photography/portrait/urban-portrait-delhi.jpg",
-      "/images/photography/portrait/artist-studio.jpg",
-      "/images/photography/portrait/environmental-portrait.jpg",
-      "/images/photography/portrait/character-study.jpg",
-      "/images/photography/portrait/street-portrait.jpg",
+      "/images/photography/portrait/IMG_8012.jpg",
+      "/images/photography/portrait/IMG_7986.jpg",
+      "/images/photography/portrait/IMG_8002.jpg",
+      "/images/photography/portrait/IMG_7983.jpg",
+      "/images/photography/portrait/IMG_8015.jpg",
+      "/images/photography/portrait/IMG_8047.jpg",
     ],
     street: [
-      "/images/photography/street/old-delhi-market.jpg",
-      "/images/photography/street/metro-commute.jpg",
-      "/images/photography/street/city-lights-night.jpg",
-      "/images/photography/street/street-vendor.jpg",
-      "/images/photography/street/monsoon-streets.jpg",
+      "/images/photography/street/IMG-20211230-WA0003.jpg",
+      "/images/photography/street/meena-bazar.jpg",
+      "/images/photography/street/meena-bazar-2.jpg",
     ],
     product: [
-      "public/images/photography/product/IMG_7562-removebg-preview.png",
-      "public/images/photography/product/IMG_7571-removebg-preview.png",
-      "public/images/photography/product/IMG_7760.png",
-      "public/images/photography/product/IMG_7764.png",
-      "public/images/photography/product/IMG_7779.png",
-      "public/images/photography/product/IMG_7786.png",
-      
+      "/images/photography/product/IMG_7562-removebg-preview.png",
+      "/images/photography/product/IMG_7571-removebg-preview.png",
+      "/images/photography/product/IMG_7760.jpg",
+      "/images/photography/product/IMG_7764.jpg",
+      "/images/photography/product/IMG_7779.jpg",
+      "/images/photography/product/IMG_7786.jpg",
     ],
     event: [
       "/images/photography/event/holi-colors.jpg",

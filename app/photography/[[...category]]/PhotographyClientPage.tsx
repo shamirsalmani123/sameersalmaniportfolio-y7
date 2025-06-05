@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { imagePaths, getImageWithFallback } from "@/lib/image-paths"
+import { imagePaths } from "@/lib/image-paths"
 
 export default function PhotographyClientPage({ params }: { params: { category?: string[] } }) {
   const [selectedImage, setSelectedImage] = useState(0)
@@ -30,40 +30,165 @@ export default function PhotographyClientPage({ params }: { params: { category?:
     { id: "event", name: "Event" },
   ]
 
-  // Create photographs array from imagePaths
-  const photographs = [
-    // Portrait photos
-    ...imagePaths.photography.portrait.map((image, index) => ({
-      id: `portrait-${index + 1}`,
-      title: `Portrait ${index + 1}`,
+  // Portrait photos with detailed descriptions
+  const portraitPhotos = [
+    {
+      id: "portrait-1",
+      title: "Traditional Bridal Portrait",
       category: "portrait",
-      image,
-      description: "Portrait photography capturing human emotion and character",
+      image: "/images/photography/portrait/IMG_8012.jpg",
+      description: "Elegant traditional Indian bridal portrait with ornate gold jewelry and floral backdrop",
       location: "Delhi, India",
       year: "2023",
-    })),
-
-    // Street photos
-    ...imagePaths.photography.street.map((image, index) => ({
-      id: `street-${index + 1}`,
-      title: `Street ${index + 1}`,
-      category: "street",
-      image,
-      description: "Candid street photography showcasing urban life",
+    },
+    {
+      id: "portrait-2",
+      title: "Veiled Beauty",
+      category: "portrait",
+      image: "/images/photography/portrait/IMG_7986.jpg",
+      description: "Artistic portrait captured through traditional red veil creating ethereal mood",
       location: "Delhi, India",
       year: "2023",
-    })),
-
-    // Product photos (new category)
-    ...(imagePaths.photography.product?.map((image, index) => ({
-      id: `product-${index + 1}`,
-      title: `Product ${index + 1}`,
-      category: "product",
-      image,
-      description: "Professional product photography with attention to detail",
+    },
+    {
+      id: "portrait-3",
+      title: "Joyful Bride",
+      category: "portrait",
+      image: "/images/photography/portrait/IMG_8002.jpg",
+      description: "Radiant bridal portrait capturing genuine happiness and traditional elegance",
+      location: "Delhi, India",
+      year: "2023",
+    },
+    {
+      id: "portrait-4",
+      title: "Studio Bridal Session",
+      category: "portrait",
+      image: "/images/photography/portrait/IMG_7983.jpg",
+      description: "Professional studio portrait showcasing traditional bridal makeup and jewelry",
       location: "Studio, Delhi",
       year: "2023",
-    })) || []),
+    },
+    {
+      id: "portrait-5",
+      title: "Contemplative Grace",
+      category: "portrait",
+      image: "/images/photography/portrait/IMG_8015.jpg",
+      description: "Dramatic portrait with beautiful lighting capturing serene expression",
+      location: "Delhi, India",
+      year: "2023",
+    },
+    {
+      id: "portrait-6",
+      title: "Traditional Elegance",
+      category: "portrait",
+      image: "/images/photography/portrait/IMG_8047.jpg",
+      description: "Classic bridal portrait emphasizing traditional attire and cultural beauty",
+      location: "Studio, Delhi",
+      year: "2023",
+    },
+  ]
+
+  // Street photos with detailed descriptions
+  const streetPhotos = [
+    {
+      id: "street-1",
+      title: "Window to Life",
+      category: "street",
+      image: "/images/photography/street/IMG-20211230-WA0003.jpg",
+      description: "Candid street moment capturing a young person in vibrant clothing against weathered architecture",
+      location: "Delhi, India",
+      year: "2021",
+    },
+    {
+      id: "street-2",
+      title: "Meena Bazaar Shopkeeper",
+      category: "street",
+      image: "/images/photography/street/meena-bazar.jpg",
+      description: "Traditional bazaar vendor surrounded by ornate frames and decorative artwork",
+      location: "Meena Bazaar, Delhi",
+      year: "2023",
+    },
+    {
+      id: "street-3",
+      title: "Brass Treasures",
+      category: "street",
+      image: "/images/photography/street/meena-bazar-2.jpg",
+      description: "Intricate display of traditional brass and metalwork in Old Delhi bazaar",
+      location: "Meena Bazaar, Delhi",
+      year: "2023",
+    },
+  ]
+
+  // Product photos with detailed descriptions
+  const productPhotos = [
+    {
+      id: "product-1",
+      title: "Handwoven Basket - Yellow & Black",
+      category: "product",
+      image: "/images/photography/product/IMG_7562-removebg-preview.png",
+      description: "Artisan handwoven basket with clean background removal for e-commerce",
+      location: "Studio, Delhi",
+      year: "2023",
+      isPNG: true,
+    },
+    {
+      id: "product-2",
+      title: "Handwoven Tote Bag",
+      category: "product",
+      image: "/images/photography/product/IMG_7571-removebg-preview.png",
+      description: "Professional product shot with transparent background for versatile use",
+      location: "Studio, Delhi",
+      year: "2023",
+      isPNG: true,
+    },
+    {
+      id: "product-3",
+      title: "Botanical Necklace - Amber Leaf",
+      category: "product",
+      image: "/images/photography/product/IMG_7760.jpg",
+      description: "Elegant jewelry photography showcasing handcrafted botanical pendant",
+      location: "Studio, Delhi",
+      year: "2023",
+    },
+    {
+      id: "product-4",
+      title: "Pressed Flower Necklace",
+      category: "product",
+      image: "/images/photography/product/IMG_7764.jpg",
+      description: "Delicate jewelry piece with pressed botanical elements, soft lighting",
+      location: "Studio, Delhi",
+      year: "2023",
+    },
+    {
+      id: "product-5",
+      title: "Botanical Pendant - Oval",
+      category: "product",
+      image: "/images/photography/product/IMG_7779.jpg",
+      description: "Handcrafted jewelry with preserved botanical elements in resin",
+      location: "Studio, Delhi",
+      year: "2023",
+    },
+    {
+      id: "product-6",
+      title: "Dried Flower Necklace",
+      category: "product",
+      image: "/images/photography/product/IMG_7786.jpg",
+      description: "Artistic jewelry photography with dramatic lighting and texture",
+      location: "Studio, Delhi",
+      year: "2023",
+    },
+  ]
+
+  // Create photographs array from imagePaths
+  const photographs = [
+    // Portrait photos (with detailed descriptions)
+    ...portraitPhotos,
+
+    // Street photos (with detailed descriptions)
+    ...streetPhotos,
+
+    // Product photos (with detailed descriptions)
+    ...productPhotos,
 
     // Event photos
     ...imagePaths.photography.event.map((image, index) => ({
@@ -128,17 +253,18 @@ export default function PhotographyClientPage({ params }: { params: { category?:
               setIsLightboxOpen(true)
             }}
           >
-            <div className="aspect-[4/5] overflow-hidden bg-gray-900 relative">
+            <div className={`aspect-[4/5] overflow-hidden ${photo.isPNG ? "bg-gray-100" : "bg-gray-900"} relative`}>
               <Image
-                src={getImageWithFallback(photo.image) || "/placeholder.svg"}
+                src={photo.image || "/placeholder.svg"}
                 alt={photo.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className={`${photo.isPNG ? "object-contain p-4" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white font-semibold mb-1">{photo.title}</h3>
-                <p className="text-gray-300 text-sm">
+                <h3 className="text-white font-semibold mb-1 text-sm">{photo.title}</h3>
+                <p className="text-gray-300 text-xs">
                   {photo.location} • {photo.year}
                 </p>
               </div>
@@ -153,13 +279,17 @@ export default function PhotographyClientPage({ params }: { params: { category?:
           <div className="relative w-full h-full flex items-center justify-center">
             {filteredPhotographs[selectedImage] && (
               <>
-                <Image
-                  src={getImageWithFallback(filteredPhotographs[selectedImage].image) || "/placeholder.svg"}
-                  alt={filteredPhotographs[selectedImage].title}
-                  width={1200}
-                  height={800}
-                  className="max-w-full max-h-full object-contain"
-                />
+                <div
+                  className={`relative max-w-full max-h-full ${filteredPhotographs[selectedImage].isPNG ? "bg-gray-100 p-8 rounded-lg" : ""}`}
+                >
+                  <Image
+                    src={filteredPhotographs[selectedImage].image || "/placeholder.svg"}
+                    alt={filteredPhotographs[selectedImage].title}
+                    width={1200}
+                    height={800}
+                    className="object-contain max-w-full max-h-full"
+                  />
+                </div>
 
                 {/* Image Info */}
                 <div className="absolute bottom-8 left-8 right-8 bg-black/50 backdrop-blur-sm p-4 rounded-lg">
