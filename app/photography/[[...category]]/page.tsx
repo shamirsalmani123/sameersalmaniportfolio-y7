@@ -3,7 +3,7 @@ import PhotographyClientPage from "./PhotographyClientPage"
 // This function is required for static export with dynamic routes
 export function generateStaticParams() {
   return [
-    { category: [] }, // /photography
+    { category: [] }, // This handles /photography
     { category: ["portrait"] }, // /photography/portrait
     { category: ["street"] }, // /photography/street
     { category: ["documentary"] }, // /photography/documentary

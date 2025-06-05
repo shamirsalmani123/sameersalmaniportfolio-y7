@@ -3,7 +3,7 @@ import BTSPageClient from "./BTSPageClient"
 // This function is required for static export with dynamic routes
 export function generateStaticParams() {
   return [
-    { project: [] }, // /bts
+    { project: [] }, // This handles /bts
     { project: ["kuchh-aur"] }, // /bts/kuchh-aur
     { project: ["do-ghaz"] }, // /bts/do-ghaz
     { project: ["kadam"] }, // /bts/kadam
