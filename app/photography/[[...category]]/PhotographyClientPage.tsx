@@ -26,8 +26,7 @@ export default function PhotographyClientPage({ params }: { params: { category?:
     { id: "all", name: "All" },
     { id: "portrait", name: "Portrait" },
     { id: "street", name: "Street" },
-    { id: "documentary", name: "Documentary" },
-    { id: "landscape", name: "Landscape" },
+    { id: "product", name: "Product" },
     { id: "event", name: "Event" },
   ]
 
@@ -55,27 +54,16 @@ export default function PhotographyClientPage({ params }: { params: { category?:
       year: "2023",
     })),
 
-    // Documentary photos
-    ...imagePaths.photography.documentary.map((image, index) => ({
-      id: `documentary-${index + 1}`,
-      title: `Documentary ${index + 1}`,
-      category: "documentary",
+    // Product photos (new category)
+    ...(imagePaths.photography.product?.map((image, index) => ({
+      id: `product-${index + 1}`,
+      title: `Product ${index + 1}`,
+      category: "product",
       image,
-      description: "Documentary photography telling important stories",
-      location: "Various locations, India",
-      year: "2022-2023",
-    })),
-
-    // Landscape photos
-    ...imagePaths.photography.landscape.map((image, index) => ({
-      id: `landscape-${index + 1}`,
-      title: `Landscape ${index + 1}`,
-      category: "landscape",
-      image,
-      description: "Landscape photography capturing natural beauty",
-      location: "Various locations, India",
-      year: "2022-2023",
-    })),
+      description: "Professional product photography with attention to detail",
+      location: "Studio, Delhi",
+      year: "2023",
+    })) || []),
 
     // Event photos
     ...imagePaths.photography.event.map((image, index) => ({
@@ -102,7 +90,7 @@ export default function PhotographyClientPage({ params }: { params: { category?:
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Photography</h1>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          A collection of my photographic work spanning portraits, street photography, documentaries, and landscapes
+          A collection of my photographic work spanning portraits, street photography, product photography, and events
         </p>
       </motion.div>
 
@@ -221,7 +209,7 @@ export default function PhotographyClientPage({ params }: { params: { category?:
           >
             <h2 className="text-3xl font-bold mb-4">Need Photography Services?</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-              I'm available for portrait sessions, event photography, and documentary projects.
+              I'm available for portrait sessions, product photography, event coverage, and more.
             </p>
             <Button size="lg">Get in Touch</Button>
           </motion.div>

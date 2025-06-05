@@ -112,10 +112,9 @@ export default function Home() {
                   src="/images/portfolio/sameer portrait.jpg"
                   alt="Sameer Salmani Portrait"
                   fill
-                  className="object-cover"
+                  className="object-cover scale-150 object-top"
                 />
               </div>
-              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 opacity-20 blur-xl" />
             </motion.div>
           </div>
         </motion.div>

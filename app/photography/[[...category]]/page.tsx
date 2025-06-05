@@ -6,8 +6,7 @@ export function generateStaticParams() {
     { category: [] }, // This handles /photography
     { category: ["portrait"] }, // /photography/portrait
     { category: ["street"] }, // /photography/street
-    { category: ["documentary"] }, // /photography/documentary
-    { category: ["landscape"] }, // /photography/landscape
+    { category: ["product"] }, // /photography/product
     { category: ["event"] }, // /photography/event
   ]
 }

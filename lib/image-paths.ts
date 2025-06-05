@@ -17,17 +17,11 @@ export const imagePaths = {
       "/images/photography/street/street-vendor.jpg",
       "/images/photography/street/monsoon-streets.jpg",
     ],
-    documentary: [
-      "/images/photography/documentary/farmers-hands.jpg",
-      "/images/photography/documentary/craftsman-work.jpg",
-      "/images/photography/documentary/social-issue.jpg",
-      "/images/photography/documentary/community-gathering.jpg",
-    ],
-    landscape: [
-      "/images/photography/landscape/himachal-golden-hour.jpg",
-      "/images/photography/landscape/monsoon-reflections.jpg",
-      "/images/photography/landscape/mountain-serenity.jpg",
-      "/images/photography/landscape/delhi-skyline.jpg",
+    product: [
+      "/images/photography/product/product-1.jpg",
+      "/images/photography/product/product-2.jpg",
+      "/images/photography/product/product-3.jpg",
+      "/images/photography/product/product-4.jpg",
     ],
     event: [
       "/images/photography/event/holi-colors.jpg",
