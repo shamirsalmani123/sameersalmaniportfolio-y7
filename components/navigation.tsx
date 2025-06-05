@@ -54,7 +54,9 @@ export default function Navigation() {
                 {item.name}
               </NavLink>
             ))}
-            <Button size="sm">Hire Me</Button>
+            <Button size="sm" onClick={() => window.open("https://wa.me/919267915407", "_blank")}>
+              Hire Me
+            </Button>
           </nav>
 
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsOpen(true)}>
@@ -104,7 +106,9 @@ export default function Navigation() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
                 >
-                  <Button size="lg">Hire Me</Button>
+                  <Button size="lg" onClick={() => window.open("https://wa.me/919267915407", "_blank")}>
+                    Hire Me
+                  </Button>
                 </motion.div>
               </nav>
             </div>
