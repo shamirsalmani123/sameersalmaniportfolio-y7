@@ -17,20 +17,52 @@ export default function Home() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
+  // Generate random stars
+  const generateStars = (count: number) => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      animationDelay: Math.random() * 4,
+      animationDuration: Math.random() * 3 + 2,
+    }))
+  }
+
+  const stars = generateStars(100)
+
   return (
     <div ref={containerRef} className="relative">
       {/* Hero Section with Portrait */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+        {/* Animated Stars Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/70 z-10" />
-          <Image
-            src="/placeholder.svg?height=1080&width=1920"
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
-          />
+          {stars.map((star) => (
+            <motion.div
+              key={star.id}
+              className="absolute bg-white rounded-full opacity-70"
+              style={{
+                left: `${star.x}%`,
+                top: `${star.y}%`,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+              }}
+              animate={{
+                opacity: [0.3, 1, 0.3],
+                scale: [0.8, 1.2, 0.8],
+              }}
+              transition={{
+                duration: star.animationDuration,
+                delay: star.animationDelay,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
         </div>
+
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-5" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,7 +108,12 @@ export default function Home() {
               className="relative mx-auto"
             >
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/10 relative">
-                <Image src="/placeholder.svg?height=400&width=400" alt="Portrait" fill className="object-cover" />
+                <Image
+                  src="/images/portfolio/sameer portrait.jpg"
+                  alt="Sameer Salmani Portrait"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 opacity-20 blur-xl" />
             </motion.div>
