@@ -18,10 +18,12 @@ export const imagePaths = {
       "/images/photography/street/monsoon-streets.jpg",
     ],
     product: [
-      "/images/photography/product/product-1.jpg",
-      "/images/photography/product/product-2.jpg",
-      "/images/photography/product/product-3.jpg",
-      "/images/photography/product/product-4.jpg",
+      "/images/photography/product/IMG_7760.jpg",
+      "/images/photography/product/IMG_7764.jpg",
+      "/images/photography/product/IMG_7779.jpg",
+      "/images/photography/product/IMG_7786.jpg",
+      "/images/photography/product/IMG_7562-removebg-preview.png",
+      "/images/photography/product/IMG_7571-removebg-preview.png",
     ],
     event: [
       "/images/photography/event/holi-colors.jpg",
