@@ -107,7 +107,7 @@ export const imagePaths = {
 
   // Portfolio/About images
   portfolio: {
-    main: "/images/portfolio/sameer-portrait-main.jpg",
+    main: "/images/portfolio/sameer portrait.jpg",
     studio: "/images/portfolio/sameer-studio.jpg",
     working: "/images/portfolio/sameer-working.jpg",
     headshot: "/images/portfolio/sameer-headshot.jpg",
