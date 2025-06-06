@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import MoonPhase from "./moon-phase"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,6 +32,20 @@ export default function Navigation() {
     }
   }, [isOpen])
 
+  // Generate random stars for the mobile menu
+  const generateStars = (count: number) => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      animationDelay: Math.random() * 4,
+      animationDuration: Math.random() * 3 + 2,
+    }))
+  }
+
+  const stars = generateStars(100)
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Projects", path: "/projects" },
@@ -48,7 +63,7 @@ export default function Navigation() {
             SAMEER SALMANI
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-6 justify-center">
             {navItems.map((item) => (
               <NavLink key={item.path} href={item.path} active={pathname === item.path}>
                 {item.name}
@@ -72,9 +87,35 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black z-50 md:hidden"
+            className="fixed inset-0 bg-black z-50 md:hidden overflow-hidden"
           >
-            <div className="flex flex-col h-full">
+            {/* Stars Background */}
+            <div className="absolute inset-0 z-0">
+              {stars.map((star) => (
+                <motion.div
+                  key={star.id}
+                  className="absolute bg-white rounded-full opacity-70"
+                  style={{
+                    left: `${star.x}%`,
+                    top: `${star.y}%`,
+                    width: `${star.size}px`,
+                    height: `${star.size}px`,
+                  }}
+                  animate={{
+                    opacity: [0.3, 1, 0.3],
+                    scale: [0.8, 1.2, 0.8],
+                  }}
+                  transition={{
+                    duration: star.animationDuration,
+                    delay: star.animationDelay,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="flex flex-col h-full relative z-10">
               <div className="flex items-center justify-between h-16 px-4 border-b border-white/10">
                 <Link href="/" className="font-bold text-xl">
                   SAMEER SALMANI
@@ -85,32 +126,45 @@ export default function Navigation() {
                 </Button>
               </div>
 
-              <nav className="flex flex-col items-center justify-center flex-1 space-y-8 p-4">
-                {navItems.map((item) => (
+              <div className="flex flex-col items-center justify-center flex-1 p-4 text-center">
+                {/* Moon Phase */}
+                <MoonPhase />
+
+                <nav className="flex flex-col items-center justify-center space-y-8 p-4 w-full">
+                  {navItems.map((item) => (
+                    <motion.div
+                      key={item.path}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full"
+                    >
+                      <Link
+                        href={item.path}
+                        className={`text-2xl font-medium block py-2 ${
+                          pathname === item.path ? "text-white" : "text-gray-400"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  ))}
                   <motion.div
-                    key={item.path}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, delay: 0.4 }}
+                    className="w-full pt-4"
                   >
-                    <Link
-                      href={item.path}
-                      className={`text-2xl font-medium ${pathname === item.path ? "text-white" : "text-gray-400"}`}
+                    <Button
+                      size="lg"
+                      onClick={() => window.open("https://wa.me/919267915407", "_blank")}
+                      className="w-full"
                     >
-                      {item.name}
-                    </Link>
+                      Hire Me
+                    </Button>
                   </motion.div>
-                ))}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                >
-                  <Button size="lg" onClick={() => window.open("https://wa.me/919267915407", "_blank")}>
-                    Hire Me
-                  </Button>
-                </motion.div>
-              </nav>
+                </nav>
+              </div>
             </div>
           </motion.div>
         )}

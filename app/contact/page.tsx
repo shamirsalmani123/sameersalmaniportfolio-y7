@@ -58,14 +58,14 @@ export default function ContactPage() {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-12">
+      <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-lg border border-white/10"
         >
-          <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">Contact Information</h2>
 
           <div className="space-y-6">
             <div className="flex items-start">
@@ -84,7 +84,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-medium">Phone</p>
-                <p className="text-gray-400">+1 (555) 123-4567</p>
+                <p className="text-gray-400">+91 9267915407</p>
               </div>
             </div>
 
@@ -99,9 +99,9 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 text-center">
             <h3 className="text-lg font-semibold mb-4">Follow Me</h3>
-            <div className="flex space-x-4">
+            <div className="flex justify-center space-x-4">
               <SocialIcon name="instagram" />
               <SocialIcon name="twitter" />
               <SocialIcon name="youtube" />
@@ -115,7 +115,7 @@ export default function ContactPage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">Send a Message</h2>
 
           {isSubmitted ? (
             <motion.div

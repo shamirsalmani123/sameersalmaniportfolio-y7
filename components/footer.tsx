@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-white/10 py-12 px-4 md:px-6">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-bold text-xl mb-4">SAMEER SALMANI</h3>
             <p className="text-gray-400 mb-4 max-w-md">
               Visual Artist and Filmmaker specializing in documentaries, short films, music videos and photography.
@@ -20,9 +20,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-semibold mb-4">Quick Links</h3>
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-3 items-center md:items-start">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
               </Link>
@@ -38,18 +38,18 @@ export default function Footer() {
             </nav>
           </div>
 
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <h3 className="font-semibold mb-4">Contact</h3>
-            <address className="not-italic text-gray-400 space-y-3">
-              <p>New York, NY</p>
+            <address className="not-italic text-gray-400 space-y-3 flex flex-col items-center md:items-start">
+              <p>New Delhi, India</p>
               <p>sameer.salmani1602@gmail.com</p>
-              <p>+1 (555) 123-4567</p>
+              <p>+91 9267915407</p>
             </address>
           </div>
         </div>
 
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Visual Artist. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Sameer Salmani. All rights reserved.</p>
         </div>
       </div>
     </footer>

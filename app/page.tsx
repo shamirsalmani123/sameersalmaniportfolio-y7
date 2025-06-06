@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div ref={containerRef} className="relative">
       {/* Hero Section with Portrait */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
         {/* Animated Stars Background */}
         <div className="absolute inset-0 z-0">
           {stars.map((star) => (
@@ -68,10 +68,27 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="container relative z-20 px-4 md:px-6"
+          className="container relative z-20 px-4 md:px-6 text-center"
         >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
+          <div className="flex flex-col items-center justify-center gap-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative mx-auto"
+            >
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/10 relative">
+                <Image
+                  src="/images/portfolio/sameer portrait.jpg"
+                  alt="Sameer Salmani Portrait"
+                  fill
+                  className="object-cover scale-150 object-top"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+            <div className="text-center">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -101,21 +118,6 @@ export default function Home() {
                 </Link>
               </motion.div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative mx-auto"
-            >
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/10 relative">
-                <Image
-                  src="/images/portfolio/sameer portrait.jpg"
-                  alt="Sameer Salmani Portrait"
-                  fill
-                  className="object-cover scale-150 object-top"
-                />
-              </div>
-            </motion.div>
           </div>
         </motion.div>
 
@@ -210,9 +212,9 @@ export default function Home() {
             <p className="text-gray-400 max-w-2xl mx-auto mb-8">
               Have a project in mind? I'm available for freelance work and collaborations.
             </p>
-            <div className="flex justify-center">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/contact">
-                <Button size="lg" className="mr-4">
+                <Button size="lg" className="w-full sm:w-auto">
                   Get in Touch
                 </Button>
               </Link>
@@ -220,7 +222,7 @@ export default function Home() {
                 variant="outline"
                 size="lg"
                 onClick={() => window.open("https://wa.me/919267915407", "_blank")}
-                className="inline-flex items-center gap-2"
+                className="inline-flex items-center gap-2 w-full sm:w-auto"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -284,7 +286,7 @@ function SkillCard({ title, software }: { title: string; software: string }) {
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-white/10"
+      className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center"
     >
       <h3 className="text-xl font-bold mb-2">{title}</h3>
       <p className="text-gray-400">{software}</p>
