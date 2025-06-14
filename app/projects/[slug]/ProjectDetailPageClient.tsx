@@ -65,7 +65,7 @@ const projectsData = {
     equipment: ["Sony A7III", "24-70mm f/2.8", "Wireless Mic System", "Tripod"],
     software: ["Premiere Pro", "DaVinci Resolve"],
     images: [
-      "/images/projects/do-ghaz/do-ghaz-hero.jpg",
+      "/images/projects/do-ghaz/do-ghaz-poster.png",
       "/images/projects/do-ghaz/do-ghaz-farmers.jpg",
       "/images/projects/do-ghaz/do-ghaz-interview.jpg",
       "/images/projects/do-ghaz/do-ghaz-protest.jpg",

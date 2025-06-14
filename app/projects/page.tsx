@@ -15,7 +15,7 @@ export default function ProjectsPage() {
       title: "Kuchh Aur Zamana Kehta Hai",
       slug: "kuchh-aur-zamana-kehta-hai",
       category: "film",
-      image: "/placeholder.svg?height=720&width=1280",
+      image: "/images/projects/kuchh-aur/kuchh-aur-poster.jpg",
       description: "A 30-minute short film about digital transition and generational connections.",
       year: "2023",
     },
@@ -24,7 +24,7 @@ export default function ProjectsPage() {
       title: "Do Ghaz Kranti",
       slug: "do-ghaz-kranti",
       category: "documentary",
-      image: "/placeholder.svg?height=720&width=1280",
+      image: "/images/projects/do-ghaz/do-ghaz-poster.png",
       description: "Documentary exploring farmers' struggles with land acquisition in Greater Noida.",
       year: "2021",
     },
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
       title: "Salaam Bombay Recreation",
       slug: "salaam-bombay-recreation",
       category: "film",
-      image: "/placeholder.svg?height=720&width=1280",
+      image: "/images/projects/salaam/salaam-poster.png",
       description: "Homage to Mira Nair's classic through scene recreation.",
       year: "2023",
     },
@@ -51,8 +51,17 @@ export default function ProjectsPage() {
       title: "Dhoop Ka Tukda",
       slug: "dhoop-ka-tukda",
       category: "audiovisual",
-      image: "/placeholder.svg?height=720&width=1280",
+      image: "/images/projects/dhoop/dhoop-poster.png",
       description: "10-minute audio-visual project with original romantic narrative.",
+      year: "2023",
+    },
+    {
+      id: 6,
+      title: "Lost",
+      slug: "lost",
+      category: "film",
+      image: "/images/projects/lost/lost-poster.png",
+      description: "5-minute short film exploring themes of childhood and memory.",
       year: "2023",
     },
   ]
@@ -60,7 +69,6 @@ export default function ProjectsPage() {
   // Other projects data
   const otherProjects = [
     { title: "Dastkaar", category: "Short AV Project", year: "2023" },
-    { title: "Lost", category: "5-minute Short Film", year: "2023" },
     { title: "Portrait Documentary on Sohail Hashmi", category: "Documentary", year: "2022" },
     { title: "Handy Hints", category: "TV Production (Art Show Format)", year: "2022" },
     { title: "The Art of Waiting", category: "Photo Feature", year: "2022" },
@@ -86,7 +94,7 @@ export default function ProjectsPage() {
 
       {/* Featured Projects */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
+        <h2 className="text-2xl font-bold mb-8 text-center">Featured Projects</h2>
 
         <Tabs defaultValue="all" className="mb-12" onValueChange={setActiveTab}>
           <div className="flex justify-center">
@@ -123,8 +131,8 @@ export default function ProjectsPage() {
           viewport={{ once: true }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold mb-4">Other Projects</h2>
-          <p className="text-gray-400 mb-8">Additional works and experimental projects</p>
+          <h2 className="text-2xl font-bold mb-4 text-center">Other Projects</h2>
+          <p className="text-gray-400 mb-8 text-center">Additional works and experimental projects</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -135,7 +143,7 @@ export default function ProjectsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-white/30 transition-all"
+              className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:border-white/30 transition-all text-center"
             >
               <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
               <p className="text-gray-400 text-sm mb-2">{project.category}</p>
@@ -159,14 +167,15 @@ function ProjectCard({ project }: { project: any }) {
         whileHover={{ y: -5 }}
         className="group relative overflow-hidden rounded-lg cursor-pointer"
       >
-        <div className="aspect-video overflow-hidden bg-gray-900 relative">
+        <div className="aspect-[3/4] overflow-hidden bg-gray-900 relative">
           <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70" />
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm text-gray-300 capitalize">{project.category}</span>

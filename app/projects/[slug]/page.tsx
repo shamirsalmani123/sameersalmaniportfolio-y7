@@ -25,7 +25,7 @@ const projectsData = {
     equipment: ["Canon EOS R6", "50mm f/1.8", "Rode VideoMic Pro", "LED Panel Lights"],
     software: ["DaVinci Resolve", "Adobe Audition"],
     images: [
-      "/images/projects/kuchh-aur/kuchh-aur-hero.jpg",
+      "/images/projects/kuchh-aur/kuchh-aur-poster.jpg",
       "/images/projects/kuchh-aur/kuchh-aur-scene-01.jpg",
       "/images/projects/kuchh-aur/kuchh-aur-scene-02.jpg",
       "/images/projects/kuchh-aur/kuchh-aur-emotional.jpg",
@@ -33,7 +33,7 @@ const projectsData = {
     videoUrl: "https://drive.google.com/file/d/1UtNCsIlXh0wkMt2LzOVwoNyyJy30Ai08/view?usp=sharing",
     awards: [],
     nextProject: "do-ghaz-kranti",
-    prevProject: "dhoop-ka-tukda",
+    prevProject: "lost",
   },
   "do-ghaz-kranti": {
     id: 2,
@@ -57,7 +57,7 @@ const projectsData = {
     equipment: ["Sony A7III", "24-70mm f/2.8", "Wireless Mic System", "Tripod"],
     software: ["Premiere Pro", "DaVinci Resolve"],
     images: [
-      "/images/projects/do-ghaz/do-ghaz-hero.jpg",
+      "/images/projects/do-ghaz/do-ghaz-poster.png",
       "/images/projects/do-ghaz/do-ghaz-farmers.jpg",
       "/images/projects/do-ghaz/do-ghaz-interview.jpg",
       "/images/projects/do-ghaz/do-ghaz-protest.jpg",
@@ -121,7 +121,7 @@ const projectsData = {
     equipment: ["Sony A7III", "Vintage Lenses", "Practical Lighting", "Production Design"],
     software: ["Premiere Pro", "DaVinci Resolve"],
     images: [
-      "/images/projects/salaam/salaam-hero.jpg",
+      "/images/projects/salaam/salaam-poster.png",
       "/images/projects/salaam/salaam-recreation.jpg",
       "/images/projects/salaam/salaam-set.jpg",
       "/images/projects/salaam/salaam-comparison.jpg",
@@ -153,15 +153,47 @@ const projectsData = {
     equipment: ["Canon EOS R6", "85mm f/1.8", "Natural Lighting", "Reflectors"],
     software: ["DaVinci Resolve", "Lightroom"],
     images: [
-      "/images/projects/dhoop/dhoop-hero.jpg",
+      "/images/projects/dhoop/dhoop-poster.png",
       "/images/projects/dhoop/dhoop-romantic.jpg",
       "/images/projects/dhoop/dhoop-artistic.jpg",
       "/images/projects/dhoop/dhoop-narrative.jpg",
     ],
     videoUrl: "https://youtu.be/T88YDPwbBKY?si=aJLSZmRF6FTajjky",
     awards: [],
-    nextProject: "kuchh-aur-zamana-kehta-hai",
+    nextProject: "lost",
     prevProject: "salaam-bombay-recreation",
+  },
+  lost: {
+    id: 6,
+    title: "Lost",
+    slug: "lost",
+    category: "Short Film",
+    year: "2023",
+    location: "Delhi, India",
+    duration: "5 minutes",
+    role: "Director | Cinematographer | Editor",
+    client: "AJK MCRC Production",
+    description:
+      "A 5-minute short film exploring themes of childhood innocence, memory, and the search for identity. The film follows a young protagonist navigating through moments of confusion and discovery in an urban landscape.",
+    challenge:
+      "Capturing the essence of childhood vulnerability and the feeling of being lost in a complex world while maintaining visual poetry and emotional depth within a short runtime.",
+    solution:
+      "Used intimate cinematography and natural performances to create an authentic portrayal of childhood experiences. Employed symbolic imagery and careful sound design to enhance the emotional narrative.",
+    results:
+      "The film successfully conveyed complex emotions through simple yet powerful visual storytelling. It demonstrated the ability to create meaningful content within tight time constraints.",
+    tags: ["Drama", "Childhood", "Identity", "Urban", "Coming of Age"],
+    equipment: ["Canon EOS R6", "50mm f/1.8", "Natural Lighting", "Handheld Camera"],
+    software: ["DaVinci Resolve", "Adobe Audition"],
+    images: [
+      "/images/projects/lost/lost-poster.png",
+      "/images/projects/lost/lost-scene-01.jpg",
+      "/images/projects/lost/lost-scene-02.jpg",
+      "/images/projects/lost/lost-scene-03.jpg",
+    ],
+    videoUrl: "",
+    awards: [],
+    nextProject: "kuchh-aur-zamana-kehta-hai",
+    prevProject: "dhoop-ka-tukda",
   },
 }
 

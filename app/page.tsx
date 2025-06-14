@@ -4,7 +4,7 @@ import { useRef } from "react"
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Video, Camera, PenTool, Globe } from "lucide-react"
 import Link from "next/link"
 
 export default function Home() {
@@ -157,10 +157,26 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ProjectCard title="Kuchh Aur Zamana Kehta Hai" category="Short Film" slug="kuchh-aur-zamana-kehta-hai" />
-            <ProjectCard title="Do Ghaz Kranti" category="Documentary" slug="do-ghaz-kranti" />
-            <ProjectCard title="Kadam: Prateek Kuhad" category="Music Video" slug="kadam-prateek-kuhad" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <ProjectCard
+              title="Kuchh Aur Zamana Kehta Hai"
+              category="Short Film"
+              slug="kuchh-aur-zamana-kehta-hai"
+              image="/images/projects/kuchh-aur/kuchh-aur-poster.jpg"
+            />
+            <ProjectCard
+              title="Do Ghaz Kranti"
+              category="Documentary"
+              slug="do-ghaz-kranti"
+              image="/images/projects/do-ghaz/do-ghaz-poster.png"
+            />
+            <ProjectCard title="Lost" category="Short Film" slug="lost" image="/images/projects/lost/lost-poster.png" />
+            <ProjectCard
+              title="Dhoop Ka Tukda"
+              category="Audio-Visual"
+              slug="dhoop-ka-tukda"
+              image="/images/projects/dhoop/dhoop-poster.png"
+            />
           </div>
 
           <div className="text-center mt-12">
@@ -186,14 +202,47 @@ export default function Home() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Professional tools and techniques I've mastered over the years
+              Professional expertise across the complete spectrum of visual storytelling
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <SkillCard title="Photography" software="Lightroom, Photoshop" />
-            <SkillCard title="Cinematography" software="DaVinci Resolve" />
-            <SkillCard title="Video Editing" software="Premiere Pro, Final Cut Pro" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <SkillCard
+              icon={Video}
+              title="Video & Post-Production"
+              skills={["Video Editing", "Motion Graphics", "Color Grading", "Visual Storytelling"]}
+              color="text-purple-500"
+              bgColor="bg-purple-500/10"
+            />
+            <SkillCard
+              icon={Camera}
+              title="Photography & Cinematography"
+              skills={["Still Photography", "Event Photography", "Cinematography", "Lighting & Composition"]}
+              color="text-blue-500"
+              bgColor="bg-blue-500/10"
+            />
+            <SkillCard
+              icon={PenTool}
+              title="Writing & Content Creation"
+              skills={["Screenwriting", "Documentary Narratives", "Copywriting", "Interview Content"]}
+              color="text-green-500"
+              bgColor="bg-green-500/10"
+            />
+            <SkillCard
+              icon={Globe}
+              title="Media & Communication"
+              skills={["Social Media Strategy", "Digital Marketing", "Research & Fieldwork", "Production Management"]}
+              color="text-orange-500"
+              bgColor="bg-orange-500/10"
+            />
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/skills">
+              <Button variant="outline" size="lg">
+                View All Skills
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -248,7 +297,12 @@ export default function Home() {
   )
 }
 
-function ProjectCard({ title, category, slug }: { title: string; category: string; slug: string }) {
+function ProjectCard({
+  title,
+  category,
+  slug,
+  image,
+}: { title: string; category: string; slug: string; image: string }) {
   return (
     <Link href={`/projects/${slug}`}>
       <motion.div
@@ -259,14 +313,15 @@ function ProjectCard({ title, category, slug }: { title: string; category: strin
         whileHover={{ y: -5 }}
         className="group relative overflow-hidden rounded-lg cursor-pointer"
       >
-        <div className="aspect-video overflow-hidden bg-gray-900 relative">
+        <div className="aspect-[3/4] overflow-hidden bg-gray-900 relative">
           <Image
-            src="/placeholder.svg?height=720&width=1280"
+            src={image || "/placeholder.svg"}
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70" />
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <span className="text-sm text-gray-300 mb-2 inline-block">{category}</span>
             <h3 className="text-xl font-bold">{title}</h3>
@@ -278,7 +333,19 @@ function ProjectCard({ title, category, slug }: { title: string; category: strin
   )
 }
 
-function SkillCard({ title, software }: { title: string; software: string }) {
+function SkillCard({
+  icon: Icon,
+  title,
+  skills,
+  color,
+  bgColor,
+}: {
+  icon: any
+  title: string
+  skills: string[]
+  color: string
+  bgColor: string
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -286,10 +353,22 @@ function SkillCard({ title, software }: { title: string; software: string }) {
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center"
+      className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-white/10 text-center group"
     >
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-400">{software}</p>
+      <div
+        className={`${bgColor} p-3 rounded-lg mx-auto mb-4 w-fit group-hover:scale-110 transition-transform duration-300`}
+      >
+        <Icon className={`h-6 w-6 ${color}`} />
+      </div>
+      <h3 className="text-lg font-bold mb-4">{title}</h3>
+      <ul className="space-y-2 text-sm text-gray-400">
+        {skills.map((skill, index) => (
+          <li key={index} className="flex items-center justify-center">
+            <span className={`inline-block w-1.5 h-1.5 ${color.replace("text-", "bg-")} rounded-full mr-2`}></span>
+            {skill}
+          </li>
+        ))}
+      </ul>
     </motion.div>
   )
 }
