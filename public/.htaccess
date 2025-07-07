@@ -1,0 +1,33 @@
+# Apache configuration for single-page applications
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Handle Angular and React Router
+  RewriteBase /
+  
+  # Handle project routes
+  RewriteRule ^projects/([^/]+)/?$ /projects/[slug]/index.html [L]
+  
+  # Handle photography routes
+  RewriteRule ^photography/([^/]+)/?$ /photography/[[...category]]/index.html [L]
+  RewriteRule ^photography/?$ /photography/[[...category]]/index.html [L]
+  
+  # Handle BTS routes
+  RewriteRule ^bts/([^/]+)/?$ /bts/[[...project]]/index.html [L]
+  RewriteRule ^bts/?$ /bts/[[...project]]/index.html [L]
+  
+  # Fallback to index.html for other routes
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>

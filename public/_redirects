@@ -1,0 +1,28 @@
+# Netlify redirects file
+# Handle dynamic routes for Netlify hosting
+
+# Project routes
+/projects/kuchh-aur-zamana-kehta-hai /projects/kuchh-aur-zamana-kehta-hai/index.html 200
+/projects/do-ghaz-kranti /projects/do-ghaz-kranti/index.html 200
+/projects/lost /projects/lost/index.html 200
+/projects/dhoop-ka-tukda /projects/dhoop-ka-tukda/index.html 200
+/projects/kadam-prateek-kuhad /projects/kadam-prateek-kuhad/index.html 200
+/projects/salaam-bombay-recreation /projects/salaam-bombay-recreation/index.html 200
+
+# Photography routes
+/photography/portrait /photography/portrait/index.html 200
+/photography/street /photography/street/index.html 200
+/photography/product /photography/product/index.html 200
+/photography/event /photography/event/index.html 200
+/photography /photography/index.html 200
+
+# BTS routes
+/bts/kuchh-aur /bts/kuchh-aur/index.html 200
+/bts/do-ghaz /bts/do-ghaz/index.html 200
+/bts/kadam /bts/kadam/index.html 200
+/bts/salaam /bts/salaam/index.html 200
+/bts/dhoop /bts/dhoop/index.html 200
+/bts /bts/index.html 200
+
+# Fallback for SPA
+/* /index.html 200
