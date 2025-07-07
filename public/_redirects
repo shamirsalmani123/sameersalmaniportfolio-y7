@@ -1,7 +1,7 @@
 # Netlify redirects file
 # Handle dynamic routes for Netlify hosting
 
-# Project routes
+# Project routes - exact matches
 /projects/kuchh-aur-zamana-kehta-hai /projects/kuchh-aur-zamana-kehta-hai/index.html 200
 /projects/do-ghaz-kranti /projects/do-ghaz-kranti/index.html 200
 /projects/lost /projects/lost/index.html 200

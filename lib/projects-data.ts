@@ -195,3 +195,11 @@ export const projectsData = {
 }
 
 export type ProjectData = (typeof projectsData)[keyof typeof projectsData]
+
+// Export project slugs for static generation
+export const projectSlugs = Object.keys(projectsData)
+
+// Helper function to get project by slug
+export const getProjectBySlug = (slug: string) => {
+  return projectsData[slug as keyof typeof projectsData] || null
+}

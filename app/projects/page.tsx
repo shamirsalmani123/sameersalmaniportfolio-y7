@@ -5,66 +5,21 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
+import { projectsData } from "@/lib/projects-data"
 
 export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("all")
 
-  const projects = [
-    {
-      id: 1,
-      title: "Kuchh Aur Zamana Kehta Hai",
-      slug: "kuchh-aur-zamana-kehta-hai",
-      category: "film",
-      image: "/images/projects/kuchh-aur/kuchh-aur-poster.jpg",
-      description: "A 30-minute short film about digital transition and generational connections.",
-      year: "2023",
-    },
-    {
-      id: 2,
-      title: "Do Ghaz Kranti",
-      slug: "do-ghaz-kranti",
-      category: "documentary",
-      image: "/images/projects/do-ghaz/do-ghaz-poster.png",
-      description: "Documentary exploring farmers' struggles with land acquisition in Greater Noida.",
-      year: "2021",
-    },
-    {
-      id: 3,
-      title: "Kadam: Prateek Kuhad",
-      slug: "kadam-prateek-kuhad",
-      category: "music",
-      image: "/placeholder.svg?height=720&width=1280",
-      description: "Music video conceptualized and shot for Prateek Kuhad's song.",
-      year: "2023",
-    },
-    {
-      id: 4,
-      title: "Salaam Bombay Recreation",
-      slug: "salaam-bombay-recreation",
-      category: "film",
-      image: "/images/projects/salaam/salaam-poster.png",
-      description: "Homage to Mira Nair's classic through scene recreation.",
-      year: "2023",
-    },
-    {
-      id: 5,
-      title: "Dhoop Ka Tukda",
-      slug: "dhoop-ka-tukda",
-      category: "audiovisual",
-      image: "/images/projects/dhoop/dhoop-poster.png",
-      description: "10-minute audio-visual project with original romantic narrative.",
-      year: "2023",
-    },
-    {
-      id: 6,
-      title: "Lost",
-      slug: "lost",
-      category: "film",
-      image: "/images/projects/lost/lost-poster.png",
-      description: "5-minute short film exploring themes of childhood and memory.",
-      year: "2023",
-    },
-  ]
+  // Convert projectsData to array format
+  const projects = Object.values(projectsData).map((project) => ({
+    id: project.id,
+    title: project.title,
+    slug: project.slug,
+    category: project.category.toLowerCase().replace(/\s+/g, ""),
+    image: project.images[0],
+    description: project.description,
+    year: project.year,
+  }))
 
   // Other projects data
   const otherProjects = [
@@ -76,7 +31,24 @@ export default function ProjectsPage() {
     { title: "Nazia Hassan", category: "Radio Feature", year: "2022" },
   ]
 
-  const filteredProjects = activeTab === "all" ? projects : projects.filter((project) => project.category === activeTab)
+  const filteredProjects =
+    activeTab === "all"
+      ? projects
+      : projects.filter((project) => {
+          const categoryMap: { [key: string]: string } = {
+            film: "shortfilm",
+            documentary: "documentary",
+            music: "musicvideo",
+            audiovisual: "audio-visual",
+            homage: "homageproject",
+          }
+
+          return (
+            project.category === categoryMap[activeTab] ||
+            project.category.includes(activeTab) ||
+            (activeTab === "film" && (project.category.includes("short") || project.category.includes("film")))
+          )
+        })
 
   return (
     <div className="container mx-auto py-16 px-4 md:px-6">
@@ -158,7 +130,7 @@ export default function ProjectsPage() {
 
 function ProjectCard({ project }: { project: any }) {
   return (
-    <Link href={`/projects/${project.slug}`}>
+    <Link href={`/projects/${project.slug}`} prefetch={true}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -174,6 +146,7 @@ function ProjectCard({ project }: { project: any }) {
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={project.id <= 4}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70" />
           <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -183,7 +156,7 @@ function ProjectCard({ project }: { project: any }) {
             </div>
             <h3 className="text-xl font-bold mb-2">{project.title}</h3>
             <p className="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {project.description}
+              {project.description.substring(0, 100)}...
             </p>
           </div>
         </div>
